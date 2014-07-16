@@ -17,6 +17,7 @@ type Score struct {
 
 // A metric is a single vector in CVSS, see the full list declared in the const section.
 type Metric int
+
 // A CVSS is simply just a vector of metrics.
 type CVSS []Metric
 
@@ -24,7 +25,7 @@ type CVSS []Metric
 // Example: "AV:N/AC:H/I:N/A:N"
 func Parse(s string) (cvss CVSS, err error) {
 	for _, name := range strings.Split(s, "/") {
-		m, ok := index[name]
+		m, ok := nameToMetric[name]
 		if !ok {
 			return nil, fmt.Errorf("cvss: unrecognized metric %q", name)
 		}
@@ -231,12 +232,12 @@ var names = [...]string{
 	AvailabilityRequirement_NotDefined: "AR:ND",
 }
 
-var index = func() map[string]Metric {
+// Create the reverse map of the names to be used when parsing a string
+// representing a CVSS in short vector format.
+var nameToMetric = func() map[string]Metric {
 	ret := map[string]Metric{}
 	for m, name := range names {
-		if name != "" {
-			ret[name] = Metric(m)
-		}
+		ret[name] = Metric(m)
 	}
 	return ret
 }()
