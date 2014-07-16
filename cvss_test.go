@@ -182,3 +182,9 @@ func TestCanParseAllNames(t *testing.T) {
 		}
 	}
 }
+
+func TestCanParseEmptyVector(t *testing.T) {
+	if _, err := Parse(""); err != nil {
+		t.Errorf("Could not parse empty vector")
+	}
+}
