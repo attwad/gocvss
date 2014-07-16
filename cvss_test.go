@@ -174,3 +174,11 @@ func TestToString(t *testing.T) {
 		t.Errorf("Should have produced a string of lenght >0")
 	}
 }
+
+func TestCanParseAllNames(t *testing.T) {
+	for _, name := range names {
+		if _, err := Parse(name); err != nil {
+			t.Errorf("Could not parse name %v", name)
+		}
+	}
+}
