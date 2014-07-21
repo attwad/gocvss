@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// A struct of CVSS scores computed from various vectors.
+// Score is a struct of CVSS scores computed from various vectors.
 type Score struct {
 	Base          float64
 	Temporal      float64
@@ -21,7 +21,7 @@ type Metric int
 // A CVSS is simply just a vector of metrics.
 type CVSS []Metric
 
-// Creates a new Cvss from a short form string vector.
+// Parse creates a new Cvss from a short form string vector.
 // Example: "AV:N/AC:H/I:N/A:N"
 func Parse(s string) (cvss CVSS, err error) {
 	for _, name := range strings.Split(s, "/") {
@@ -34,7 +34,7 @@ func Parse(s string) (cvss CVSS, err error) {
 	return cvss, nil
 }
 
-// Outputs the CVSS to its short string vector form.
+// ToStringVector returns the CVSS to its short string vector form.
 // Example: "AV:N/AC:H/I:N/A:N"
 func (c CVSS) ToStringVector() string {
 	s := make([]string, len(c))
@@ -45,7 +45,7 @@ func (c CVSS) ToStringVector() string {
 	return strings.Join(s, "/")
 }
 
-// Provides a human readable version of the metrics and scores associated with the model.
+// String provides a human readable version of the metrics and scores associated with the model.
 func (c CVSS) String() string {
 	return fmt.Sprintf(
 		"base score                     %f\n"+

@@ -23,7 +23,7 @@ func getBaseScore(impact, base_exploitability, impact_mod float64) float64 {
 		((0.6 * impact) + (0.4 * base_exploitability) - 1.5) * impact_mod)
 }
 
-// Returns the computed scores for the given CVSS model.
+// Score returns the computed scores for the given CVSS model.
 func (c CVSS) Score() Score {
 	return Score{
 		Base:          c.baseScore(),
