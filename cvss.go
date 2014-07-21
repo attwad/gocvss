@@ -245,7 +245,7 @@ var nameToMetric = func() map[string]Metric {
 var scores = [...]float64{
 	AccessVector_Local:    0.375,
 	AccessVector_Adjacent: 0.646,
-	AccessVector_Network:  1.0,
+	AccessVector_Network:  1,
 
 	AccessComplexity_High:   0.35,
 	AccessComplexity_Medium: 0.61,
@@ -255,62 +255,62 @@ var scores = [...]float64{
 	Authentication_Single:   0.56,
 	Authentication_None:     0.704,
 
-	Confidentiality_None:     0.0,
+	Confidentiality_None:     0,
 	Confidentiality_Partial:  0.275,
 	Confidentiality_Complete: 0.66,
 
-	Integrity_None:     0.0,
+	Integrity_None:     0,
 	Integrity_Partial:  0.275,
 	Integrity_Complete: 0.66,
 
-	Availability_None:     0.0,
+	Availability_None:     0,
 	Availability_Partial:  0.275,
 	Availability_Complete: 0.66,
 
 	Exploitability_Unproven:       0.85,
 	Exploitability_ProofOfConcept: 0.9,
 	Exploitability_Functional:     0.95,
-	Exploitability_High:           1.0,
-	Exploitability_NotDefined:     1.0,
+	Exploitability_High:           1,
+	Exploitability_NotDefined:     1,
 
 	RemediationLevel_OfficialFix:  0.87,
 	RemediationLevel_TemporaryFix: 0.9,
 	RemediationLevel_Workaround:   0.95,
-	RemediationLevel_Unavailable:  1.0,
-	RemediationLevel_NotDefined:   1.0,
+	RemediationLevel_Unavailable:  1,
+	RemediationLevel_NotDefined:   1,
 
 	ReportConfidence_Unconfirmed:    0.9,
 	ReportConfidence_Uncorroborated: 0.95,
-	ReportConfidence_Confirmed:      1.0,
-	ReportConfidence_NotDefined:     1.0,
+	ReportConfidence_Confirmed:      1,
+	ReportConfidence_NotDefined:     1,
 
-	CollateralDamagePotential_None:       0.0,
-	CollateralDamagePotential_Low:        1.0,
+	CollateralDamagePotential_None:       0,
+	CollateralDamagePotential_Low:        1,
 	CollateralDamagePotential_LowMedium:  0.3,
 	CollateralDamagePotential_MediumHigh: 0.4,
 	CollateralDamagePotential_High:       0.5,
-	CollateralDamagePotential_NotDefined: 0.0,
+	CollateralDamagePotential_NotDefined: 0,
 
-	TargetDistribution_None:       0.0,
+	TargetDistribution_None:       0,
 	TargetDistribution_Low:        0.25,
 	TargetDistribution_Medium:     0.75,
-	TargetDistribution_High:       1.0,
-	TargetDistribution_NotDefined: 0.0,
+	TargetDistribution_High:       1,
+	TargetDistribution_NotDefined: 0,
 
 	ConfidentialityRequirement_Low:        0.5,
-	ConfidentialityRequirement_Medium:     1.0,
+	ConfidentialityRequirement_Medium:     1,
 	ConfidentialityRequirement_High:       1.51,
-	ConfidentialityRequirement_NotDefined: 1.0,
+	ConfidentialityRequirement_NotDefined: 1,
 
 	IntegrityRequirement_Low:        0.5,
-	IntegrityRequirement_Medium:     1.0,
+	IntegrityRequirement_Medium:     1,
 	IntegrityRequirement_High:       1.51,
-	IntegrityRequirement_NotDefined: 1.0,
+	IntegrityRequirement_NotDefined: 1,
 
 	AvailabilityRequirement_Low:        0.5,
-	AvailabilityRequirement_Medium:     1.0,
+	AvailabilityRequirement_Medium:     1,
 	AvailabilityRequirement_High:       1.51,
-	AvailabilityRequirement_NotDefined: 1.0,
+	AvailabilityRequirement_NotDefined: 1,
 }
 
 type group int

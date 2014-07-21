@@ -5,10 +5,10 @@ import "math"
 // Round to one decimal.
 func round(x float64) float64 {
 	var rounder float64
-	pow := math.Pow(10, 1.0)
+	pow := math.Pow(10, 1)
 	intermed := x * pow
 
-	if intermed < 0.0 {
+	if intermed < 0 {
 		intermed -= 0.5
 	} else {
 		intermed += 0.5
@@ -45,21 +45,21 @@ func (c CVSS) baseScore() float64 {
 }
 
 func (c CVSS) impact() float64 {
-	return 10.41 * (1.0 - (1.0-c.confidentialityImpact())*
-		(1.0-c.integrityImpact())*
-		(1.0-c.availabilityImpact()))
+	return 10.41 * (1 - (1-c.confidentialityImpact())*
+		(1-c.integrityImpact())*
+		(1-c.availabilityImpact()))
 }
 
 func (c CVSS) confidentialityImpact() float64 {
-	return c.score(0.0, confidentiality)
+	return c.score(0, confidentiality)
 }
 
 func (c CVSS) integrityImpact() float64 {
-	return c.score(0.0, integrity)
+	return c.score(0, integrity)
 }
 
 func (c CVSS) availabilityImpact() float64 {
-	return c.score(0.0, availability)
+	return c.score(0, availability)
 }
 
 func (c CVSS) baseExploitability() float64 {
@@ -67,20 +67,20 @@ func (c CVSS) baseExploitability() float64 {
 }
 
 func (c CVSS) accessVectorScore() float64 {
-	return c.score(0.0, accessVector)
+	return c.score(0, accessVector)
 }
 
 func (c CVSS) accessComplexityScore() float64 {
-	return c.score(0.0, accessComplexity)
+	return c.score(0, accessComplexity)
 }
 
 func (c CVSS) authenticationScore() float64 {
-	return c.score(0.0, authentication)
+	return c.score(0, authentication)
 }
 
 func (c CVSS) impactMod() float64 {
-	if c.impact() == 0.0 {
-		return 0.0
+	if c.impact() == 0 {
+		return 0
 	}
 	return 1.176
 }
@@ -119,8 +119,8 @@ func (c CVSS) adjustedImpact() float64 {
 }
 
 func (c CVSS) adjustedImpactMod() float64 {
-	if c.adjustedImpact() == 0.0 {
-		return 0.0
+	if c.adjustedImpact() == 0 {
+		return 0
 	}
 	return 1.176
 }
