@@ -2,9 +2,10 @@ package cvss
 
 import "math"
 
-func round(x float64, prec int) float64 {
+// Round to one decimal.
+func round(x float64) float64 {
 	var rounder float64
-	pow := math.Pow(10, float64(prec))
+	pow := math.Pow(10, 1.0)
 	intermed := x * pow
 
 	if intermed < 0.0 {
@@ -19,7 +20,7 @@ func round(x float64, prec int) float64 {
 
 func getBaseScore(impact, base_exploitability, impact_mod float64) float64 {
 	return round(
-		((0.6*impact)+(0.4*base_exploitability)-1.5)*impact_mod, 1)
+		((0.6 * impact) + (0.4 * base_exploitability) - 1.5) * impact_mod)
 }
 
 // Returns the computed scores for the given CVSS model.
@@ -89,7 +90,7 @@ func (c CVSS) temporalScore() float64 {
 }
 
 func (c CVSS) getTemporalScore(baseScore float64) float64 {
-	return round(baseScore*c.temporalExploitability()*c.remediationLevel()*c.reportConfidence(), 1)
+	return round(baseScore * c.temporalExploitability() * c.remediationLevel() * c.reportConfidence())
 }
 
 func (c CVSS) temporalExploitability() float64 {
@@ -105,7 +106,7 @@ func (c CVSS) reportConfidence() float64 {
 }
 
 func (c CVSS) environmentalScore() float64 {
-	return round((c.adjustedTemporal()+(10-c.adjustedTemporal())*c.collateralDamagePotential())*c.targetDistribution(), 1)
+	return round((c.adjustedTemporal() + (10-c.adjustedTemporal())*c.collateralDamagePotential()) * c.targetDistribution())
 }
 
 func (c CVSS) adjustedTemporal() float64 {
