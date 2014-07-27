@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/attwad/gocvss.svg?branch=master)](https://travis-ci.org/attwad/gocvss)
+[![GoDoc](https://godoc.org/github.com/attwad/gocvss?status.png)](https://godoc.org/github.com/attwad/gocvss)
 
 gocvss
 ======
