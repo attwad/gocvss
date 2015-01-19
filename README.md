@@ -4,7 +4,7 @@
 gocvss
 ======
 
-Library to parse Common Vulerability Sscoring System vectors and generate scores
+Library to parse Common Vulnerability Scoring System vectors and generate scores
 
 Usage
 =====
