@@ -15,10 +15,10 @@ type Score struct {
 	Environmental float64
 }
 
-// A metric is a single vector in CVSS, see the full list declared in the const section.
+// Metric is a single vector in CVSS, see the full list declared in the const section.
 type Metric int
 
-// A CVSS is simply just a vector of metrics.
+// CVSS is simply just a vector of metrics.
 type CVSS []Metric
 
 // Parse creates a new Cvss from a short form string vector.
