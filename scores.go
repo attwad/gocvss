@@ -18,9 +18,9 @@ func round(x float64) float64 {
 	return rounder / float64(pow)
 }
 
-func getBaseScore(impact, base_exploitability, impact_mod float64) float64 {
+func getBaseScore(impact, baseExploitability, impactMod float64) float64 {
 	return round(
-		((0.6 * impact) + (0.4 * base_exploitability) - 1.5) * impact_mod)
+		((0.6 * impact) + (0.4 * baseExploitability) - 1.5) * impactMod)
 }
 
 // Score returns the computed scores for the given CVSS model.
@@ -94,15 +94,15 @@ func (c CVSS) getTemporalScore(baseScore float64) float64 {
 }
 
 func (c CVSS) temporalExploitability() float64 {
-	return c.score(scores[Exploitability_NotDefined], exploitability)
+	return c.score(scores[ExploitabilityNotDefined], exploitability)
 }
 
 func (c CVSS) remediationLevel() float64 {
-	return c.score(scores[RemediationLevel_NotDefined], remediationLevel)
+	return c.score(scores[RemediationLevelNotDefined], remediationLevel)
 }
 
 func (c CVSS) reportConfidence() float64 {
-	return c.score(scores[ReportConfidence_NotDefined], reportConfidence)
+	return c.score(scores[ReportConfidenceNotDefined], reportConfidence)
 }
 
 func (c CVSS) environmentalScore() float64 {
@@ -126,21 +126,21 @@ func (c CVSS) adjustedImpactMod() float64 {
 }
 
 func (c CVSS) collateralDamagePotential() float64 {
-	return c.score(scores[CollateralDamagePotential_NotDefined], collateralDamagePotential)
+	return c.score(scores[CollateralDamagePotentialNotDefined], collateralDamagePotential)
 }
 
 func (c CVSS) targetDistribution() float64 {
-	return c.score(scores[TargetDistribution_NotDefined], targetDistribution)
+	return c.score(scores[TargetDistributionNotDefined], targetDistribution)
 }
 
 func (c CVSS) confidentialityRequirement() float64 {
-	return c.score(scores[ConfidentialityRequirement_NotDefined], confidentialityRequirement)
+	return c.score(scores[ConfidentialityRequirementNotDefined], confidentialityRequirement)
 }
 
 func (c CVSS) integrityRequirement() float64 {
-	return c.score(scores[IntegrityRequirement_NotDefined], integrityRequirement)
+	return c.score(scores[IntegrityRequirementNotDefined], integrityRequirement)
 }
 
 func (c CVSS) availabilityRequirement() float64 {
-	return c.score(scores[AvailabilityRequirement_NotDefined], availabilityRequirement)
+	return c.score(scores[AvailabilityRequirementNotDefined], availabilityRequirement)
 }

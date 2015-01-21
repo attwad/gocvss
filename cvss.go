@@ -1,4 +1,4 @@
-// This package provides cvss computation methods.
+// Package cvss provides cvss computation methods.
 // It follows the specifications at http://www.first.org/cvss/cvss-guide
 package cvss
 
@@ -91,145 +91,145 @@ func (c CVSS) String() string {
 
 const (
 	noMetric Metric = iota
-	AccessVector_Local
-	AccessVector_Adjacent
-	AccessVector_Network
+	AccessVectorLocal
+	AccessVectorAdjacent
+	AccessVectorNetwork
 
-	AccessComplexity_High
-	AccessComplexity_Medium
-	AccessComplexity_Low
+	AccessComplexityHigh
+	AccessComplexityMedium
+	AccessComplexityLow
 
-	Authentication_Multiple
-	Authentication_Single
-	Authentication_None
+	AuthenticationMultiple
+	AuthenticationSingle
+	AuthenticationNone
 
-	Confidentiality_None
-	Confidentiality_Partial
-	Confidentiality_Complete
+	ConfidentialityNone
+	ConfidentialityPartial
+	ConfidentialityComplete
 
-	Integrity_None
-	Integrity_Partial
-	Integrity_Complete
+	IntegrityNone
+	IntegrityPartial
+	IntegrityComplete
 
-	Availability_None
-	Availability_Partial
-	Availability_Complete
+	AvailabilityNone
+	AvailabilityPartial
+	AvailabilityComplete
 
-	Exploitability_Unproven
-	Exploitability_ProofOfConcept
-	Exploitability_Functional
-	Exploitability_High
-	Exploitability_NotDefined
+	ExploitabilityUnproven
+	ExploitabilityProofOfConcept
+	ExploitabilityFunctional
+	ExploitabilityHigh
+	ExploitabilityNotDefined
 
-	RemediationLevel_OfficialFix
-	RemediationLevel_TemporaryFix
-	RemediationLevel_Workaround
-	RemediationLevel_Unavailable
-	RemediationLevel_NotDefined
+	RemediationLevelOfficialFix
+	RemediationLevelTemporaryFix
+	RemediationLevelWorkaround
+	RemediationLevelUnavailable
+	RemediationLevelNotDefined
 
-	ReportConfidence_Unconfirmed
-	ReportConfidence_Uncorroborated
-	ReportConfidence_Confirmed
-	ReportConfidence_NotDefined
+	ReportConfidenceUnconfirmed
+	ReportConfidenceUncorroborated
+	ReportConfidenceConfirmed
+	ReportConfidenceNotDefined
 
-	CollateralDamagePotential_None
-	CollateralDamagePotential_Low
-	CollateralDamagePotential_LowMedium
-	CollateralDamagePotential_MediumHigh
-	CollateralDamagePotential_High
-	CollateralDamagePotential_NotDefined
+	CollateralDamagePotentialNone
+	CollateralDamagePotentialLow
+	CollateralDamagePotentialLowMedium
+	CollateralDamagePotentialMediumHigh
+	CollateralDamagePotentialHigh
+	CollateralDamagePotentialNotDefined
 
-	TargetDistribution_None
-	TargetDistribution_Low
-	TargetDistribution_Medium
-	TargetDistribution_High
-	TargetDistribution_NotDefined
+	TargetDistributionNone
+	TargetDistributionLow
+	TargetDistributionMedium
+	TargetDistributionHigh
+	TargetDistributionNotDefined
 
-	ConfidentialityRequirement_Low
-	ConfidentialityRequirement_Medium
-	ConfidentialityRequirement_High
-	ConfidentialityRequirement_NotDefined
+	ConfidentialityRequirementLow
+	ConfidentialityRequirementMedium
+	ConfidentialityRequirementHigh
+	ConfidentialityRequirementNotDefined
 
-	IntegrityRequirement_Low
-	IntegrityRequirement_Medium
-	IntegrityRequirement_High
-	IntegrityRequirement_NotDefined
+	IntegrityRequirementLow
+	IntegrityRequirementMedium
+	IntegrityRequirementHigh
+	IntegrityRequirementNotDefined
 
-	AvailabilityRequirement_Low
-	AvailabilityRequirement_Medium
-	AvailabilityRequirement_High
-	AvailabilityRequirement_NotDefined
+	AvailabilityRequirementLow
+	AvailabilityRequirementMedium
+	AvailabilityRequirementHigh
+	AvailabilityRequirementNotDefined
 )
 
 var names = [...]string{
-	AccessVector_Local:    "AV:L",
-	AccessVector_Adjacent: "AV:A",
-	AccessVector_Network:  "AV:N",
+	AccessVectorLocal:    "AV:L",
+	AccessVectorAdjacent: "AV:A",
+	AccessVectorNetwork:  "AV:N",
 
-	AccessComplexity_High:   "AC:H",
-	AccessComplexity_Medium: "AC:M",
-	AccessComplexity_Low:    "AC:L",
+	AccessComplexityHigh:   "AC:H",
+	AccessComplexityMedium: "AC:M",
+	AccessComplexityLow:    "AC:L",
 
-	Authentication_Multiple: "Au:M",
-	Authentication_Single:   "Au:S",
-	Authentication_None:     "Au:N",
+	AuthenticationMultiple: "Au:M",
+	AuthenticationSingle:   "Au:S",
+	AuthenticationNone:     "Au:N",
 
-	Confidentiality_None:     "C:N",
-	Confidentiality_Partial:  "C:P",
-	Confidentiality_Complete: "C:C",
+	ConfidentialityNone:     "C:N",
+	ConfidentialityPartial:  "C:P",
+	ConfidentialityComplete: "C:C",
 
-	Integrity_None:     "I:N",
-	Integrity_Partial:  "I:P",
-	Integrity_Complete: "I:C",
+	IntegrityNone:     "I:N",
+	IntegrityPartial:  "I:P",
+	IntegrityComplete: "I:C",
 
-	Availability_None:     "A:N",
-	Availability_Partial:  "A:P",
-	Availability_Complete: "A:C",
+	AvailabilityNone:     "A:N",
+	AvailabilityPartial:  "A:P",
+	AvailabilityComplete: "A:C",
 
-	Exploitability_Unproven:       "E:P",
-	Exploitability_ProofOfConcept: "E:POC",
-	Exploitability_Functional:     "E:F",
-	Exploitability_High:           "E:H",
-	Exploitability_NotDefined:     "E:ND",
+	ExploitabilityUnproven:       "E:P",
+	ExploitabilityProofOfConcept: "E:POC",
+	ExploitabilityFunctional:     "E:F",
+	ExploitabilityHigh:           "E:H",
+	ExploitabilityNotDefined:     "E:ND",
 
-	RemediationLevel_OfficialFix:  "RL:OF",
-	RemediationLevel_TemporaryFix: "RL:TF",
-	RemediationLevel_Workaround:   "RL:W",
-	RemediationLevel_Unavailable:  "RL:U",
-	RemediationLevel_NotDefined:   "RL:ND",
+	RemediationLevelOfficialFix:  "RL:OF",
+	RemediationLevelTemporaryFix: "RL:TF",
+	RemediationLevelWorkaround:   "RL:W",
+	RemediationLevelUnavailable:  "RL:U",
+	RemediationLevelNotDefined:   "RL:ND",
 
-	ReportConfidence_Unconfirmed:    "RC:U",
-	ReportConfidence_Uncorroborated: "RC:U",
-	ReportConfidence_Confirmed:      "RC:C",
-	ReportConfidence_NotDefined:     "RC:ND",
+	ReportConfidenceUnconfirmed:    "RC:U",
+	ReportConfidenceUncorroborated: "RC:U",
+	ReportConfidenceConfirmed:      "RC:C",
+	ReportConfidenceNotDefined:     "RC:ND",
 
-	CollateralDamagePotential_None:       "CDP:N",
-	CollateralDamagePotential_Low:        "CDP:L",
-	CollateralDamagePotential_LowMedium:  "CDP:LM",
-	CollateralDamagePotential_MediumHigh: "CDP:MH",
-	CollateralDamagePotential_High:       "CDP:H",
-	CollateralDamagePotential_NotDefined: "CDP:ND",
+	CollateralDamagePotentialNone:       "CDP:N",
+	CollateralDamagePotentialLow:        "CDP:L",
+	CollateralDamagePotentialLowMedium:  "CDP:LM",
+	CollateralDamagePotentialMediumHigh: "CDP:MH",
+	CollateralDamagePotentialHigh:       "CDP:H",
+	CollateralDamagePotentialNotDefined: "CDP:ND",
 
-	TargetDistribution_None:       "TD:N",
-	TargetDistribution_Low:        "TD:L",
-	TargetDistribution_Medium:     "TD:M",
-	TargetDistribution_High:       "TD:H",
-	TargetDistribution_NotDefined: "TD:ND",
+	TargetDistributionNone:       "TD:N",
+	TargetDistributionLow:        "TD:L",
+	TargetDistributionMedium:     "TD:M",
+	TargetDistributionHigh:       "TD:H",
+	TargetDistributionNotDefined: "TD:ND",
 
-	ConfidentialityRequirement_Low:        "CR:L",
-	ConfidentialityRequirement_Medium:     "CR:M",
-	ConfidentialityRequirement_High:       "CR:H",
-	ConfidentialityRequirement_NotDefined: "CR:ND",
+	ConfidentialityRequirementLow:        "CR:L",
+	ConfidentialityRequirementMedium:     "CR:M",
+	ConfidentialityRequirementHigh:       "CR:H",
+	ConfidentialityRequirementNotDefined: "CR:ND",
 
-	IntegrityRequirement_Low:        "IR:L",
-	IntegrityRequirement_Medium:     "IR:M",
-	IntegrityRequirement_High:       "IR:H",
-	IntegrityRequirement_NotDefined: "IR:ND",
+	IntegrityRequirementLow:        "IR:L",
+	IntegrityRequirementMedium:     "IR:M",
+	IntegrityRequirementHigh:       "IR:H",
+	IntegrityRequirementNotDefined: "IR:ND",
 
-	AvailabilityRequirement_Low:        "AR:L",
-	AvailabilityRequirement_Medium:     "AR:M",
-	AvailabilityRequirement_High:       "AR:H",
-	AvailabilityRequirement_NotDefined: "AR:ND",
+	AvailabilityRequirementLow:        "AR:L",
+	AvailabilityRequirementMedium:     "AR:M",
+	AvailabilityRequirementHigh:       "AR:H",
+	AvailabilityRequirementNotDefined: "AR:ND",
 }
 
 // Create the reverse map of the names to be used when parsing a string
@@ -243,74 +243,74 @@ var nameToMetric = func() map[string]Metric {
 }()
 
 var scores = [...]float64{
-	AccessVector_Local:    0.375,
-	AccessVector_Adjacent: 0.646,
-	AccessVector_Network:  1,
+	AccessVectorLocal:    0.375,
+	AccessVectorAdjacent: 0.646,
+	AccessVectorNetwork:  1,
 
-	AccessComplexity_High:   0.35,
-	AccessComplexity_Medium: 0.61,
-	AccessComplexity_Low:    0.71,
+	AccessComplexityHigh:   0.35,
+	AccessComplexityMedium: 0.61,
+	AccessComplexityLow:    0.71,
 
-	Authentication_Multiple: 0.45,
-	Authentication_Single:   0.56,
-	Authentication_None:     0.704,
+	AuthenticationMultiple: 0.45,
+	AuthenticationSingle:   0.56,
+	AuthenticationNone:     0.704,
 
-	Confidentiality_None:     0,
-	Confidentiality_Partial:  0.275,
-	Confidentiality_Complete: 0.66,
+	ConfidentialityNone:     0,
+	ConfidentialityPartial:  0.275,
+	ConfidentialityComplete: 0.66,
 
-	Integrity_None:     0,
-	Integrity_Partial:  0.275,
-	Integrity_Complete: 0.66,
+	IntegrityNone:     0,
+	IntegrityPartial:  0.275,
+	IntegrityComplete: 0.66,
 
-	Availability_None:     0,
-	Availability_Partial:  0.275,
-	Availability_Complete: 0.66,
+	AvailabilityNone:     0,
+	AvailabilityPartial:  0.275,
+	AvailabilityComplete: 0.66,
 
-	Exploitability_Unproven:       0.85,
-	Exploitability_ProofOfConcept: 0.9,
-	Exploitability_Functional:     0.95,
-	Exploitability_High:           1,
-	Exploitability_NotDefined:     1,
+	ExploitabilityUnproven:       0.85,
+	ExploitabilityProofOfConcept: 0.9,
+	ExploitabilityFunctional:     0.95,
+	ExploitabilityHigh:           1,
+	ExploitabilityNotDefined:     1,
 
-	RemediationLevel_OfficialFix:  0.87,
-	RemediationLevel_TemporaryFix: 0.9,
-	RemediationLevel_Workaround:   0.95,
-	RemediationLevel_Unavailable:  1,
-	RemediationLevel_NotDefined:   1,
+	RemediationLevelOfficialFix:  0.87,
+	RemediationLevelTemporaryFix: 0.9,
+	RemediationLevelWorkaround:   0.95,
+	RemediationLevelUnavailable:  1,
+	RemediationLevelNotDefined:   1,
 
-	ReportConfidence_Unconfirmed:    0.9,
-	ReportConfidence_Uncorroborated: 0.95,
-	ReportConfidence_Confirmed:      1,
-	ReportConfidence_NotDefined:     1,
+	ReportConfidenceUnconfirmed:    0.9,
+	ReportConfidenceUncorroborated: 0.95,
+	ReportConfidenceConfirmed:      1,
+	ReportConfidenceNotDefined:     1,
 
-	CollateralDamagePotential_None:       0,
-	CollateralDamagePotential_Low:        1,
-	CollateralDamagePotential_LowMedium:  0.3,
-	CollateralDamagePotential_MediumHigh: 0.4,
-	CollateralDamagePotential_High:       0.5,
-	CollateralDamagePotential_NotDefined: 0,
+	CollateralDamagePotentialNone:       0,
+	CollateralDamagePotentialLow:        1,
+	CollateralDamagePotentialLowMedium:  0.3,
+	CollateralDamagePotentialMediumHigh: 0.4,
+	CollateralDamagePotentialHigh:       0.5,
+	CollateralDamagePotentialNotDefined: 0,
 
-	TargetDistribution_None:       0,
-	TargetDistribution_Low:        0.25,
-	TargetDistribution_Medium:     0.75,
-	TargetDistribution_High:       1,
-	TargetDistribution_NotDefined: 0,
+	TargetDistributionNone:       0,
+	TargetDistributionLow:        0.25,
+	TargetDistributionMedium:     0.75,
+	TargetDistributionHigh:       1,
+	TargetDistributionNotDefined: 0,
 
-	ConfidentialityRequirement_Low:        0.5,
-	ConfidentialityRequirement_Medium:     1,
-	ConfidentialityRequirement_High:       1.51,
-	ConfidentialityRequirement_NotDefined: 1,
+	ConfidentialityRequirementLow:        0.5,
+	ConfidentialityRequirementMedium:     1,
+	ConfidentialityRequirementHigh:       1.51,
+	ConfidentialityRequirementNotDefined: 1,
 
-	IntegrityRequirement_Low:        0.5,
-	IntegrityRequirement_Medium:     1,
-	IntegrityRequirement_High:       1.51,
-	IntegrityRequirement_NotDefined: 1,
+	IntegrityRequirementLow:        0.5,
+	IntegrityRequirementMedium:     1,
+	IntegrityRequirementHigh:       1.51,
+	IntegrityRequirementNotDefined: 1,
 
-	AvailabilityRequirement_Low:        0.5,
-	AvailabilityRequirement_Medium:     1,
-	AvailabilityRequirement_High:       1.51,
-	AvailabilityRequirement_NotDefined: 1,
+	AvailabilityRequirementLow:        0.5,
+	AvailabilityRequirementMedium:     1,
+	AvailabilityRequirementHigh:       1.51,
+	AvailabilityRequirementNotDefined: 1,
 }
 
 type group int
@@ -334,72 +334,72 @@ const (
 )
 
 var groups = [...]group{
-	AccessVector_Local:    accessVector,
-	AccessVector_Adjacent: accessVector,
-	AccessVector_Network:  accessVector,
+	AccessVectorLocal:    accessVector,
+	AccessVectorAdjacent: accessVector,
+	AccessVectorNetwork:  accessVector,
 
-	AccessComplexity_High:   accessComplexity,
-	AccessComplexity_Medium: accessComplexity,
-	AccessComplexity_Low:    accessComplexity,
+	AccessComplexityHigh:   accessComplexity,
+	AccessComplexityMedium: accessComplexity,
+	AccessComplexityLow:    accessComplexity,
 
-	Authentication_Multiple: authentication,
-	Authentication_Single:   authentication,
-	Authentication_None:     authentication,
+	AuthenticationMultiple: authentication,
+	AuthenticationSingle:   authentication,
+	AuthenticationNone:     authentication,
 
-	Confidentiality_None:     confidentiality,
-	Confidentiality_Partial:  confidentiality,
-	Confidentiality_Complete: confidentiality,
+	ConfidentialityNone:     confidentiality,
+	ConfidentialityPartial:  confidentiality,
+	ConfidentialityComplete: confidentiality,
 
-	Integrity_None:     integrity,
-	Integrity_Partial:  integrity,
-	Integrity_Complete: integrity,
+	IntegrityNone:     integrity,
+	IntegrityPartial:  integrity,
+	IntegrityComplete: integrity,
 
-	Availability_None:     availability,
-	Availability_Partial:  availability,
-	Availability_Complete: availability,
+	AvailabilityNone:     availability,
+	AvailabilityPartial:  availability,
+	AvailabilityComplete: availability,
 
-	Exploitability_Unproven:       exploitability,
-	Exploitability_ProofOfConcept: exploitability,
-	Exploitability_Functional:     exploitability,
-	Exploitability_High:           exploitability,
-	Exploitability_NotDefined:     exploitability,
+	ExploitabilityUnproven:       exploitability,
+	ExploitabilityProofOfConcept: exploitability,
+	ExploitabilityFunctional:     exploitability,
+	ExploitabilityHigh:           exploitability,
+	ExploitabilityNotDefined:     exploitability,
 
-	RemediationLevel_OfficialFix:  remediationLevel,
-	RemediationLevel_TemporaryFix: remediationLevel,
-	RemediationLevel_Workaround:   remediationLevel,
-	RemediationLevel_Unavailable:  remediationLevel,
-	RemediationLevel_NotDefined:   remediationLevel,
+	RemediationLevelOfficialFix:  remediationLevel,
+	RemediationLevelTemporaryFix: remediationLevel,
+	RemediationLevelWorkaround:   remediationLevel,
+	RemediationLevelUnavailable:  remediationLevel,
+	RemediationLevelNotDefined:   remediationLevel,
 
-	ReportConfidence_Unconfirmed:    reportConfidence,
-	ReportConfidence_Uncorroborated: reportConfidence,
-	ReportConfidence_Confirmed:      reportConfidence,
-	ReportConfidence_NotDefined:     reportConfidence,
+	ReportConfidenceUnconfirmed:    reportConfidence,
+	ReportConfidenceUncorroborated: reportConfidence,
+	ReportConfidenceConfirmed:      reportConfidence,
+	ReportConfidenceNotDefined:     reportConfidence,
 
-	CollateralDamagePotential_None:       collateralDamagePotential,
-	CollateralDamagePotential_Low:        collateralDamagePotential,
-	CollateralDamagePotential_LowMedium:  collateralDamagePotential,
-	CollateralDamagePotential_MediumHigh: collateralDamagePotential,
-	CollateralDamagePotential_High:       collateralDamagePotential,
-	CollateralDamagePotential_NotDefined: collateralDamagePotential,
+	CollateralDamagePotentialNone:       collateralDamagePotential,
+	CollateralDamagePotentialLow:        collateralDamagePotential,
+	CollateralDamagePotentialLowMedium:  collateralDamagePotential,
+	CollateralDamagePotentialMediumHigh: collateralDamagePotential,
+	CollateralDamagePotentialHigh:       collateralDamagePotential,
+	CollateralDamagePotentialNotDefined: collateralDamagePotential,
 
-	TargetDistribution_None:       targetDistribution,
-	TargetDistribution_Low:        targetDistribution,
-	TargetDistribution_Medium:     targetDistribution,
-	TargetDistribution_High:       targetDistribution,
-	TargetDistribution_NotDefined: targetDistribution,
+	TargetDistributionNone:       targetDistribution,
+	TargetDistributionLow:        targetDistribution,
+	TargetDistributionMedium:     targetDistribution,
+	TargetDistributionHigh:       targetDistribution,
+	TargetDistributionNotDefined: targetDistribution,
 
-	ConfidentialityRequirement_Low:        confidentiality,
-	ConfidentialityRequirement_Medium:     confidentiality,
-	ConfidentialityRequirement_High:       confidentiality,
-	ConfidentialityRequirement_NotDefined: confidentiality,
+	ConfidentialityRequirementLow:        confidentiality,
+	ConfidentialityRequirementMedium:     confidentiality,
+	ConfidentialityRequirementHigh:       confidentiality,
+	ConfidentialityRequirementNotDefined: confidentiality,
 
-	IntegrityRequirement_Low:        integrityRequirement,
-	IntegrityRequirement_Medium:     integrityRequirement,
-	IntegrityRequirement_High:       integrityRequirement,
-	IntegrityRequirement_NotDefined: integrityRequirement,
+	IntegrityRequirementLow:        integrityRequirement,
+	IntegrityRequirementMedium:     integrityRequirement,
+	IntegrityRequirementHigh:       integrityRequirement,
+	IntegrityRequirementNotDefined: integrityRequirement,
 
-	AvailabilityRequirement_Low:        availabilityRequirement,
-	AvailabilityRequirement_Medium:     availabilityRequirement,
-	AvailabilityRequirement_High:       availabilityRequirement,
-	AvailabilityRequirement_NotDefined: availabilityRequirement,
+	AvailabilityRequirementLow:        availabilityRequirement,
+	AvailabilityRequirementMedium:     availabilityRequirement,
+	AvailabilityRequirementHigh:       availabilityRequirement,
+	AvailabilityRequirementNotDefined: availabilityRequirement,
 }

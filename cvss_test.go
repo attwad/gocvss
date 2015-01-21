@@ -22,15 +22,15 @@ func TestCve_2002_0392_HighEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_Functional)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityFunctional)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_High)
-	c = append(c, TargetDistribution_High)
-	c = append(c, ConfidentialityRequirement_High)
-	c = append(c, IntegrityRequirement_High)
-	c = append(c, AvailabilityRequirement_High)
+	c = append(c, CollateralDamagePotentialHigh)
+	c = append(c, TargetDistributionHigh)
+	c = append(c, ConfidentialityRequirementHigh)
+	c = append(c, IntegrityRequirementHigh)
+	c = append(c, AvailabilityRequirementHigh)
 
 	s := c.Score()
 	expected := Score{7.8, 6.4, 9.2}
@@ -45,15 +45,15 @@ func TestCve_2002_0392_LowEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_Functional)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityFunctional)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_None)
-	c = append(c, TargetDistribution_None)
-	c = append(c, ConfidentialityRequirement_Medium)
-	c = append(c, IntegrityRequirement_Medium)
-	c = append(c, AvailabilityRequirement_High)
+	c = append(c, CollateralDamagePotentialNone)
+	c = append(c, TargetDistributionNone)
+	c = append(c, ConfidentialityRequirementMedium)
+	c = append(c, IntegrityRequirementMedium)
+	c = append(c, AvailabilityRequirementHigh)
 
 	s := c.Score()
 	expected := Score{7.8, 6.4, 0.0}
@@ -68,15 +68,15 @@ func TestCve_2003_0818_HighEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_Functional)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityFunctional)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_High)
-	c = append(c, TargetDistribution_High)
-	c = append(c, ConfidentialityRequirement_Medium)
-	c = append(c, IntegrityRequirement_Medium)
-	c = append(c, AvailabilityRequirement_Low)
+	c = append(c, CollateralDamagePotentialHigh)
+	c = append(c, TargetDistributionHigh)
+	c = append(c, ConfidentialityRequirementMedium)
+	c = append(c, IntegrityRequirementMedium)
+	c = append(c, AvailabilityRequirementLow)
 
 	s := c.Score()
 	expected := Score{10.0, 8.3, 9.0}
@@ -91,15 +91,15 @@ func TestCve_2003_0818_LowEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_Functional)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityFunctional)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_None)
-	c = append(c, TargetDistribution_None)
-	c = append(c, ConfidentialityRequirement_Medium)
-	c = append(c, IntegrityRequirement_Medium)
-	c = append(c, AvailabilityRequirement_Low)
+	c = append(c, CollateralDamagePotentialNone)
+	c = append(c, TargetDistributionNone)
+	c = append(c, ConfidentialityRequirementMedium)
+	c = append(c, IntegrityRequirementMedium)
+	c = append(c, AvailabilityRequirementLow)
 
 	s := c.Score()
 	expected := Score{10.0, 8.3, 0.0}
@@ -114,15 +114,15 @@ func TestCve_2003_0062_HighEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_ProofOfConcept)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityProofOfConcept)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_High)
-	c = append(c, TargetDistribution_High)
-	c = append(c, ConfidentialityRequirement_High)
-	c = append(c, IntegrityRequirement_High)
-	c = append(c, AvailabilityRequirement_High)
+	c = append(c, CollateralDamagePotentialHigh)
+	c = append(c, TargetDistributionHigh)
+	c = append(c, ConfidentialityRequirementHigh)
+	c = append(c, IntegrityRequirementHigh)
+	c = append(c, AvailabilityRequirementHigh)
 
 	s := c.Score()
 	expected := Score{6.2, 4.9, 7.5}
@@ -137,15 +137,15 @@ func TestCve_2003_0062_LowEnv(t *testing.T) {
 		t.Errorf("New from vector failed: %v", err)
 	}
 	// Temp
-	c = append(c, Exploitability_ProofOfConcept)
-	c = append(c, RemediationLevel_OfficialFix)
-	c = append(c, ReportConfidence_Confirmed)
+	c = append(c, ExploitabilityProofOfConcept)
+	c = append(c, RemediationLevelOfficialFix)
+	c = append(c, ReportConfidenceConfirmed)
 	// Env
-	c = append(c, CollateralDamagePotential_None)
-	c = append(c, TargetDistribution_None)
-	c = append(c, ConfidentialityRequirement_Medium)
-	c = append(c, IntegrityRequirement_Medium)
-	c = append(c, AvailabilityRequirement_Medium)
+	c = append(c, CollateralDamagePotentialNone)
+	c = append(c, TargetDistributionNone)
+	c = append(c, ConfidentialityRequirementMedium)
+	c = append(c, IntegrityRequirementMedium)
+	c = append(c, AvailabilityRequirementMedium)
 
 	s := c.Score()
 	expected := Score{6.2, 4.9, 0.0}
